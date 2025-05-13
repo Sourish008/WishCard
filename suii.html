@@ -385,36 +385,37 @@ document.querySelectorAll('.btn').forEach(button => {
   </script>
     </script>
     <script>
-        const image = document.querySelector('.hidden');
+        const images = document.querySelectorAll('.hidden');
 
-function handleTilt(x, y, width, height) {
-  const rotateX = ((y - height / 2) / height) * 20;
-  const rotateY = ((x - width / 2) / width) * -20;
+images.forEach(image => {
+  function handleTilt(x, y, width, height) {
+    const rotateX = ((y - height / 2) / height) * 20;
+    const rotateY = ((x - width / 2) / width) * -20;
+    image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }
 
-  image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-}
+  function resetTilt() {
+    image.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  }
 
-function resetTilt() {
-  image.style.transform = 'rotateX(0deg) rotateY(0deg)';
-}
+  // Mouse
+  image.addEventListener('mousemove', e => {
+    const rect = image.getBoundingClientRect();
+    handleTilt(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
+  });
 
-// Desktop (mouse)
-image.addEventListener('mousemove', (e) => {
-  const rect = image.getBoundingClientRect();
-  handleTilt(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
+  image.addEventListener('mouseleave', resetTilt);
+
+  // Touch
+  image.addEventListener('touchmove', e => {
+    const rect = image.getBoundingClientRect();
+    const touch = e.touches[0];
+    handleTilt(touch.clientX - rect.left, touch.clientY - rect.top, rect.width, rect.height);
+  });
+
+  image.addEventListener('touchend', resetTilt);
+  image.addEventListener('touchcancel', resetTilt);
 });
-
-image.addEventListener('mouseleave', resetTilt);
-
-// Mobile (touch)
-image.addEventListener('touchmove', (e) => {
-  const rect = image.getBoundingClientRect();
-  const touch = e.touches[0];
-  handleTilt(touch.clientX - rect.left, touch.clientY - rect.top, rect.width, rect.height);
-});
-
-image.addEventListener('touchend', resetTilt);
-image.addEventListener('touchcancel', resetTilt);
     </script>
 </body>
 </html>
