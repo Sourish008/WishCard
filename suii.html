@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Love</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffb6c1, #ffc0cb);
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #d6336c;
+        }
+
+        /* Image Slider Effect */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            perspective: 800px;
+        }
+        .gallery img {
+              width: 250px;
+              height: auto;
+              border-radius: 15px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+              transform: rotateY(20deg) scale(1.1);
+              transition: transform 0.5s ease-in-out;
+              transform-style: preserve-3d;
+    }
+.gallery img:hover {
+  transform: scale(1.2);
+}
+
+
+        .gallery img.hidden {
+            display: none;
+        }
+        .gallery img.show {
+            transform: rotateY(10deg) scale(1.05);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Smooth Sliding Animation */
+        @keyframes slideIn {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Message Box */
+        .message {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s ease, transform 0.5s ease-in-out;
+            display: none;
+        }
+        .message.show {
+            opacity: 1;
+            transform: scale(1);
+            display: block;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff3e6a, #ff7096);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Fireworks Canvas */
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Special Day, My Love!</h1>
+        <p class="sub">To the most amazing girl in the world</p>
+
+        <div class="gallery">
+            <img id="img1" class="hidden" src="WhatsApp Image 2025-05-06 at 12.10.11_79dcbb5a.jpg" alt="Pic 1">
+            <img id="img2" class="hidden" src="WhatsApp Image 2025-05-06 at 12.10.14_9a708d7b.jpg" alt="Pic 2">
+            <img id="img3" class="hidden" src="WhatsApp Image 2025-05-06 at 12.11.23_6d6909d1.jpg" alt="Pic 3">
+        </div>
+
+        <div class="message" id="msg1">
+            <h2>You're My Forever!</h2>
+            <p>Happy bday to you love😘🎂.It's your bday yeah I'm more excited about you because you are the one person whose birthday I wait especially because I get to tell you how much happy I am that you were born. How much excited I am that you came into my life as that one special person who makes a difference in my life, my happiness, my sadness, my smile, my tears I have shared everything with you, to the all new movies I have made with you , to all those moments I can never forget you have been a part of my life, it's your birthday I want to tell you,"Maybe no one cares about how you are but I do. You make great worse, Angry but I know you have a heart always ready to love me, your special to me, I don't know how to tell you that I am afraid to lose you, I want to spend my lifetime celebrating birthday with you, but I never want to be alone and yess I will upload your photos 😁👀, it's my right, Keep  smiling 😃❤. And <h3><b>Happppyyyyyyyy Bdayyyyy to youu.... 😚🎂🫂❤✨</h3></b></p>
+        </div>
+
+        <div class="message" id="msg2">
+            <h2>Our Beautiful Journey!</h2>
+            <p>Happy Birthday to the most precious girl I know💫. Today isn't just about celebrating your birth - it's about celebrating the love , light and laughter you bring into everyone's life💖. You're the kind of person whose presence feels like home. Whether it's your warm smile, you caring heart or the way you listen like you truly feel every word - you make people feel seen, safe and loved💌. You're not just beautiful outside, You're a galaxy of softness, strength and kindness inside. On this special day, I hope you see yourself the way the world sees you - a real soul full of light and grace✨❤. You deserve all the magic this universe has to offer. May this year heel what hurt you, grow what you've planted and bring you a kind of peace you've never felt before. Keep Shining, Keep blooming and keep being unapologitically You. You are loved, deeply - today and always.<b><h3>Happy birthday "Mimi".❤🫂
+              I lovee you so much 💌🫂✨❤
+              Uuummaaaaaaaahhh 😘🫂💗💫</h3></b></p>
+        </div>
+
+        <div class="message" id="msg3">
+            <h2>A Love Beyond Words!</h2>
+            <p>You deserve all the love in the world , it's amazing to have you in my life as my special person. I lucky to know you, to love you, to care for you, no matter what other says I know you have a heart to forgive easily, you Gate Angry but you never use your anger against me, you are sweet, I can never explain how special I feel when you understand me without me even trying to say how I feel, but if someday I am worse with you please don't misunderstand, please never ignore me. I have been worse sometimes I agree, but my intention was never to hurt you , for me you're the only one I have right now in my life whom I share everything with,  you are very special to me. I don't want to leave a life without you.<h3><b>You are the only person I want in my life right now, I love you so muchh... 😭❤🫂🧿</h3></b></p>
+        </div>
+
+        <div class="buttons">
+            <button class="btn" onclick="showImageAndMessage('img1', 'msg1')">Show Image 1</button>
+            <button class="btn" onclick="showImageAndMessage('img2', 'msg2')">Show Image 2</button>
+            <button class="btn" onclick="showImageAndMessage('img3', 'msg3')">Show Image 3</button>
+        </div>
+    </div>
+    <style>
+      .music-player {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #ff3e6a, #ff7096);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .music-player::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
+        top: -50%;
+        left: -50%;
+        transform: scale(0);
+        transition: transform 0.4s ease;
+      }
+    
+      .music-player:hover {
+        transform: scale(1.05);
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4);
+      }
+    
+      .music-player:hover::before {
+        transform: scale(1);
+      }
+    </style>
+    
+
+
+    <button class="music-player" onclick="playMusic()">🎶 Play Music</button>
+    
+    <audio id="music" loop>
+      <source src="WhatsApp Audio 2025-05-08 at 00.42.06_c8d286f3.mp3" type="audio/mp3">
+    </audio>
+    
+    <script>
+      function playMusic() {
+        document.getElementById("music").play();
+      }
+    </script>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <script>
+        function showImageAndMessage(imageId, messageId) {
+            const images = document.querySelectorAll('.gallery img');
+            const messages = document.querySelectorAll('.message');
+
+            images.forEach(img => img.classList.add('hidden'));
+            images.forEach(img => img.classList.remove('show'));
+            messages.forEach(msg => {
+                msg.classList.add('hidden');
+                msg.classList.remove('show');
+                msg.style.display = "none";
+            });
+
+            document.getElementById(imageId).classList.remove('hidden');
+            document.getElementById(imageId).classList.add('show');
+
+            const selectedMsg = document.getElementById(messageId);
+            selectedMsg.classList.remove('hidden');
+            selectedMsg.classList.add('show');
+            selectedMsg.style.display = "block";
+
+            createRandomFireworks();
+        }
+
+        const canvas = document.getElementById("fireworksCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Firework {
+    constructor(x, y) {
+        this.particles = [];
+        for (let i = 0; i < 1000; i++) {
+            const angle = Math.PI * 2 * (i / 1000);
+            this.particles.push({
+                x: x,
+                y: y,
+                velocityX: Math.cos(angle) * (Math.random() * 3 + 1),
+                velocityY: Math.sin(angle) * (Math.random() * 3 + 1),
+                radius: Math.random() * 3 + 1,
+                color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                life: 150
+            });
+        }
+    }
+
+    update() {
+        this.particles.forEach(p => {
+            p.x += p.velocityX * 0.98;
+            p.y += p.velocityY * 0.98;
+            p.life -= 1;
+            p.radius *= 0.98;
+        });
+    }
+
+    draw() {
+        this.particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+        });
+    }
+}
+
+let fireworks = [];
+
+function createRandomFireworks() {
+    const randomX = Math.random() * canvas.width;
+    const randomY = Math.random() * canvas.height;
+    fireworks.push(new Firework(randomX, randomY));
+}
+
+function animateFireworks() {
+    requestAnimationFrame(animateFireworks);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    fireworks = fireworks.filter(f => f.particles.some(p => p.life > 0));
+    fireworks.forEach(f => {
+        f.update();
+        f.draw();
+    });
+}
+
+animateFireworks();
+
+// Trigger fireworks when clicking a button
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', () => {
+        createRandomFireworks();
+    });
+});
+    </script>
+</body>
+</html>
