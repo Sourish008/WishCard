@@ -13,6 +13,50 @@
             color: #333;
             text-align: center;
         }
+        
+        span {
+      position: absolute;
+      pointer-events: none;
+      animation: fadeInOut 1s linear infinite;
+    }
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0;
+      }
+      20%, 80% {
+        opacity: 1;
+      }
+    }
+    span::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(heart.png);
+      background-size: cover;
+      animation: moveshape 1s linear infinite;
+    }
+    @keyframes moveshape {
+      0% {
+        transform: translate(0) rotate(0deg);
+      }      
+      100% {
+        transform: translate(100px) rotate(360deg);
+      }
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 600px) {
+      body {
+        min-height: 100vh;
+      }
+      span::before {
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+
         .container {
             padding: 40px 20px;
         }
@@ -118,7 +162,7 @@
         <p class="sub">To the most amazing girl in the world</p>
 
         <div class="gallery">
-            <img id="img1" class="hidden" src="WhatsApp Image 2025-05-06 at 12.10.11_79dcbb5a.jpg" alt="Pic 1">
+            <img id="img1" class="hidden" src="WhatsApp Image 2025-05-06 at 12.10.11_79dcbb5a.jpg" alt="Pic 1" data-tilt data-tilt-glare>>
             <img id="img2" class="hidden" src="WhatsApp Image 2025-05-06 at 12.10.14_9a708d7b.jpg" alt="Pic 2">
             <img id="img3" class="hidden" src="WhatsApp Image 2025-05-06 at 12.11.23_6d6909d1.jpg" alt="Pic 3">
         </div>
@@ -294,6 +338,83 @@ document.querySelectorAll('.btn').forEach(button => {
         createRandomFireworks();
     });
 });
+    </script>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+      let body = document.querySelector('body');
+      let heart = document.createElement('span');
+      let x = e.clientX;
+      let y = e.clientY;
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+
+      let size = Math.random() * 50 + 10; // Adjusted for better responsiveness
+      heart.style.width = size + 'px';
+      heart.style.height = size + 'px';
+
+      let transformValue = Math.random() * 360;
+      heart.style.transform = 'rotate(' + transformValue + 'deg)';
+
+      body.appendChild(heart);
+      setTimeout(function() {
+        heart.remove();
+      }, 1000);
+    });
+
+    document.addEventListener('touchmove', function(e) {
+      let body = document.querySelector('body');
+      let heart = document.createElement('span');
+      let touch = e.touches[0];
+      let x = touch.clientX;
+      let y = touch.clientY;
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+
+      let size = Math.random() * 50 + 10;
+      heart.style.width = size + 'px';
+      heart.style.height = size + 'px';
+
+      let transformValue = Math.random() * 360;
+      heart.style.transform = 'rotate(' + transformValue + 'deg)';
+
+      body.appendChild(heart);
+      setTimeout(function() {
+        heart.remove();
+      }, 1000);
+    }, { passive: true });
+  </script>
+    </script>
+    <script>
+        const image = document.querySelector('.hidden');
+
+function handleTilt(x, y, width, height) {
+  const rotateX = ((y - height / 2) / height) * 20;
+  const rotateY = ((x - width / 2) / width) * -20;
+
+  image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+function resetTilt() {
+  image.style.transform = 'rotateX(0deg) rotateY(0deg)';
+}
+
+// Desktop (mouse)
+image.addEventListener('mousemove', (e) => {
+  const rect = image.getBoundingClientRect();
+  handleTilt(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
+});
+
+image.addEventListener('mouseleave', resetTilt);
+
+// Mobile (touch)
+image.addEventListener('touchmove', (e) => {
+  const rect = image.getBoundingClientRect();
+  const touch = e.touches[0];
+  handleTilt(touch.clientX - rect.left, touch.clientY - rect.top, rect.width, rect.height);
+});
+
+image.addEventListener('touchend', resetTilt);
+image.addEventListener('touchcancel', resetTilt);
     </script>
 </body>
 </html>
